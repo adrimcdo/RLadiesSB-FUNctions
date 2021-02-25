@@ -1,6 +1,6 @@
 ---
 title: "Putting the fun in FUNctions"
-author: "your name here"
+author: "Adriane McDonald"
 date: "24 February 2021"
 output: html_document
 editor_options: 
@@ -78,7 +78,7 @@ f_to_c <- function(x) {
 
 Yay! Now, we can see what 78 fahrenheit is in celsius.
 ```{r}
-
+f_to_c(78)
 
 
 ```
@@ -98,12 +98,13 @@ c_to_f <- function(x) {
   return(convert)
 }
 
+
 ```
 
 And check to see if it works!
 ```{r}
 
-
+c_to_f(26)
 
 ```
 
@@ -148,14 +149,14 @@ temp.conv <- function(from, to, x) {
 Let's try it out! I'll try converting 25 degrees celsius into fahrenheit.
 ```{r}
 
-
+temp.conv(from = "celsius", to = "fahrenheit", 25)
 
 ```
 
 What if we supply inputs that aren't "celsius" and "fahrenheit"?
 ```{r}
 
-
+temp.conv(from = "c", to = "f", 25)
 
 ```
 
@@ -178,7 +179,11 @@ temp.conv <- function(from, to, x) {
  
     # if `from` and `to` don't match any of the expected inputs, give warning and return NA 
    } else {
-      warning("The inputs provided (from = '", from, "' & to = '", to,"') are not as expected. Double check spelling.")
+      warning("The inputs provided (from = '",
+              from,
+              "' & to = '",
+              to,
+              "') are not as expected. Double check spelling.")
       return(NA)
   }
   
@@ -190,7 +195,10 @@ temp.conv <- function(from, to, x) {
 And now we can try the function with our new arguments:
 
 ```{r}
+temp.conv(from = "c", to = "f", 38)
+temp.conv("c","f",21)
 
+temp.conv(x = 21, from = "c", to = "f") # any of these notations work 
 ```
 
 Now you're ready to write your own functions!
@@ -208,7 +216,17 @@ planets <- c("Mars", "Saturn", "Jupiter", "Mercury")
 Try writing your function and seeing what the output is!
 
 ```{r}
-
+planet_awesome <- function(x) {
+  if(class(x) == "character") {
+    awesome_message <- paste(x, " is awesome!", sep = "")
+    return(awesome_message)
+  } else {
+    warning("The input provided (x ='",
+            "was not expected. Double check spelling and ensure inputs are in character.")
+    return(NA)
+  }
+}
+planet_awesome(planets)
 
 ```
 
